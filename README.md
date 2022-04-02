@@ -25,10 +25,10 @@ Kubernetes based Continuous Delivery
 
 ## Python hello-cli-tool
 tried commands like
-$ python app.py
-$ python app.py --help
-$ python app.py --count=5 --name=”John”
-$ python app.py --name=”John”
+`$ python app.py` <br/>
+`$ python app.py --help` <br/>
+`$ python app.py --count=5 --name=”John”` <br/>
+`$ python app.py --name=”John”` <br/>
 <img width="714" alt="image" src="https://user-images.githubusercontent.com/47130690/161396855-4ae9d531-0d57-4177-b8ba-23cc0da3c45e.png">
 
 
@@ -65,11 +65,11 @@ e.g.,
 To exit the bash terminal, type `exit`
 
 #### Option 2: Pass in a command
-`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --count 2 --name "John"`
-or
-`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --name="John"
-or
-`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --count 2` 
+`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --count 2 --name "John"` <br/>
+or <br/>
+`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --name="John"` <br/>
+or <br/>
+`$ docker run --rm -it hello-cli-tool:v1.0 python app.py --count 2`  <br/>
 
 
 ## GitHub Action continuous deployment
