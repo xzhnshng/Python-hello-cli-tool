@@ -42,8 +42,8 @@ jobs:
       run: |
         make lint
   
-  # Job2: "build-and-push-image-to-ECR"
-  build-and-push-image-to-ECR:
+  # Job2: "build-and-push-image-to-ECR & deploy on EKS"
+  deploy:
     
     name: Build image and push to ECR
     runs-on: ubuntu-latest
@@ -70,9 +70,20 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         echo "Pushing image to ECR..."
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      
+        docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v1
+      with:
+        version: 'v1.21.3'
+      id: install
+    
+    - name: Update kube config
+      run: aws eks update-kubeconfig --name hello-cli-tool --region us-east-1
+    
+    - name: Deploy image to Amazon EKS
+      run: kubectl apply -f deployment.yaml
     
   
