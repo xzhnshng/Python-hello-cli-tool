@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-cli-tool-deployment
+  labels:
+    app: hello-cli-tool
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-cli-tool
+  template:
+    metadata:
+      labels:
+        app: hello-cli-tool
+    spec:
+      containers:
+      - name: hello-cli-tool
+        image: 594263025974.dkr.ecr.us-east-1.amazonaws.com/hello-cli-tool:latest
+        imagePullPolicy: Always
