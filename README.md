@@ -1,4 +1,6 @@
 # README
+[![Python hello-cli-tool CI/CD with GitHub Action (build image and push image to ECR)](https://github.com/xzhnshng/ids-project2/actions/workflows/main.yml/badge.svg)](https://github.com/xzhnshng/ids-project2/actions/workflows/main.yml)
+
 
 ## Overview
 This project is about a Python script deployment based on Kubernetes Continous Delivery.  <br/><br/>
